@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template - Player Assessment/Evaluation Sheet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #FDFDFD; color: #4A5568; }
+        .header { background-color: #0A2463; color: white; }
+        .footer { background-color: #0A2463; color: white; }
+        .main-section-title { color: #0A2463; }
+        .card { background-color: white; border-radius: 0.75rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); border: 1px solid #E2E8F0; padding: 1.5rem; }
+        .button-back { background-color: #3E8E7E; color: white; padding: 0.5rem 1rem; border-radius: 0.375rem; text-decoration: none; display: inline-block; margin-bottom: 1rem; }
+        .button-back:hover { background-color: #2c6b5d; }
+        .assessment-table th, .assessment-table td { border: 1px solid #E2E8F0; padding: 0.5rem; font-size: 0.875rem; }
+        .assessment-table th { background-color: #F1F5F9; color: #0A2463; text-align: left;}
+        .form-input {
+            border: 1px solid #D1D5DB; /* Tailwind gray-300 */
+            border-radius: 0.375rem; /* rounded-md */
+            padding: 0.5rem 0.75rem; /* p-2 px-3 */
+            font-size: 0.875rem; /* text-sm */
+            width: 200px; /* Adjust as needed */
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* shadow-sm */
+        }
+        .form-input:focus, .form-select:focus {
+            outline: 2px solid transparent;
+            outline-offset: 2px;
+            border-color: #3E8E7E; /* Accent-1: Bright Teal */
+            box-shadow: 0 0 0 3px rgba(62, 142, 126, 0.3); /* Ring color matching accent */
+        }
+        .form-select {
+            border: 1px solid #D1D5DB;
+            border-radius: 0.375rem;
+            padding: 0.5rem 0.75rem;
+            font-size: 0.875rem;
+            width: 100px; /* Adjust as needed */
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+            background-position: right 0.5rem center;
+            background-repeat: no-repeat;
+            background-size: 1.5em 1.5em;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+
+
+        /* New Rating Scale Styles */
+        .rating-scale-container { margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid #E2E8F0; }
+        .rating-scale-title { font-weight: 600; color: #0A2463; margin-bottom: 0.75rem; font-size: 0.875rem; } /* text-sm equivalent */
+        .rating-scale-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75rem; }
+        .rating-item { background-color: #F9FAFB; border: 1px solid #E5E7EB; border-radius: 0.5rem; padding: 0.75rem; font-size: 0.875rem; }
+        .rating-item strong { font-weight: 600; }
+        .rating-1 { color: #DC2626; } /* Red-600 */
+        .rating-2 { color: #F59E0B; } /* Amber-500 */
+        .rating-3 { color: #10B981; } /* Emerald-500 */
+        .rating-4 { color: #2563EB; } /* Blue-600 */
+
+    </style>
+</head>
+<body class="text-slate-700">
+    <header class="header p-4 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-xl sm:text-2xl font-bold">Player Assessment/Evaluation Sheet Template</h1>
+            <a href="https://ccampbell1988.github.io/HP1-Post-Task-Section-B-Question-4/" class="button-back">← Back to Physical Prep</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto p-4 md:p-8 mt-4">
+        <div class="card">
+            <h2 class="main-section-title text-2xl font-bold mb-6">Player Assessment</h2>
+            <p class="mb-4 text-sm text-slate-600">This template is for tracking individual player skills, strengths, weaknesses, and progress on Critical Fitness Variables (CFVs). Ratings (e.g., 1-Needs Work, 2-Developing, 3-Proficient, 4-Excellent) can be applied. Include specific comments for actionable feedback.</p>
+            
+            <div class="mb-6 grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
+                <div>
+                    <label for="playerName" class="block text-sm font-medium text-slate-700">Player Name:</label>
+                    <input type="text" id="playerName" name="playerName" class="form-input mt-1">
+                </div>
+                <div>
+                    <label for="assessmentDate" class="block text-sm font-medium text-slate-700">Date:</label>
+                    <input type="date" id="assessmentDate" name="assessmentDate" class="form-input mt-1">
+                </div>
+                <div>
+                    <label for="playerPosition" class="block text-sm font-medium text-slate-700">Position:</label>
+                    <select id="playerPosition" name="playerPosition" class="form-select mt-1">
+                        <option value="">Select...</option>
+                        <option value="F">Forward (F)</option>
+                        <option value="D">Defence (D)</option>
+                        <option value="G">Goaltender (G)</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="evaluatorName" class="block text-sm font-medium text-slate-700">Evaluator:</label>
+                    <input type="text" id="evaluatorName" name="evaluatorName" class="form-input mt-1">
+                </div>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full assessment-table">
+                    <thead>
+                        <tr>
+                            <th>Category/Skill</th>
+                            <th>Sub-Component</th>
+                            <th>Rating (1-4)</th>
+                            <th>Comments/Observations</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td rowspan="3" class="font-semibold">Skating</td>
+                            <td>Agility & Edge Work</td>
+                            <td><input type="number" min="1" max="4" class="w-16 p-1 border rounded form-input"></td>
+                            <td><textarea rows="1" class="w-full p-1 border rounded form-input"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td>Speed & Acceleration</td>
+                            <td><input type="number" min="1" max="4" class="w-16 p-1 border rounded form-input"></td>
+                            <td><textarea rows="1" class="w-full p-1 border rounded form-input"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td>Transitions (Fwd-Bwd)</td>
+                            <td><input type="number" min="1" max="4" class="w-16 p-1 border rounded form-input"></td>
+                            <td><textarea rows="1" class="w-full p-1 border rounded form-input"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td rowspan="3" class="font-semibold">Puck Control</td>
+                            <td>Creativity & Deception</td>
+                            <td><input type="number" min="1" max="4" class="w-16 p-1 border rounded form-input"></td>
+                            <td><textarea rows="1" class="w-full p-1 border rounded form-input"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td>Protection Under Pressure</td>
+                            <td><input type="number" min="1" max="4" class="w-16 p-1 border rounded form-input"></td>
+                            <td><textarea rows="1" class="w-full p-1 border rounded form-input"></textarea></td>
+                        </tr>
+                         <tr>
+                            <td>Small Area Skills</td>
+                            <td><input type="number" min="1" max="4" class="w-16 p-1 border rounded form-input"></td>
+                            <td><textarea rows="1" class="w-full p-1 border rounded form-input"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2" class="font-semibold">Shooting</td>
+                            <td>Quick Release & Accuracy</td>
+                            <td><input type="number" min="1" max="4" class="w-16 p-1 border rounded form-input"></td>
+                            <td><textarea rows="1" class="w-full p-1 border rounded form-input"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td>Shot Selection & Mentality</td>
+                            <td><input type="number" min="1" max="4" class="w-16 p-1 border rounded form-input"></td>
+                            <td><textarea rows="1" class="w-full p-1 border rounded form-input"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">Passing</td>
+                            <td>Accuracy & Reception (Fwd/Bwd)</td>
+                            <td><input type="number" min="1" max="4" class="w-16 p-1 border rounded form-input"></td>
+                            <td><textarea rows="1" class="w-full p-1 border rounded form-input"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2" class="font-semibold">Defensive Skills</td>
+                            <td>Angling & Gap Control</td>
+                            <td><input type="number" min="1" max="4" class="w-16 p-1 border rounded form-input"></td>
+                            <td><textarea rows="1" class="w-full p-1 border rounded form-input"></textarea></td>
+                        </tr>
+                         <tr>
+                            <td>Stick Work & Puck Separation</td>
+                            <td><input type="number" min="1" max="4" class="w-16 p-1 border rounded form-input"></td>
+                            <td><textarea rows="1" class="w-full p-1 border rounded form-input"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">Compete Level</td>
+                            <td>Battles, Puck Pursuit, Toughness</td>
+                            <td><input type="number" min="1" max="4" class="w-16 p-1 border rounded form-input"></td>
+                            <td><textarea rows="1" class="w-full p-1 border rounded form-input"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">Hockey Sense</td>
+                            <td>Awareness, Decision Making</td>
+                            <td><input type="number" min="1" max="4" class="w-16 p-1 border rounded form-input"></td>
+                            <td><textarea rows="1" class="w-full p-1 border rounded form-input"></textarea></td>
+                        </tr>
+                        </tbody>
+                </table>
+            </div>
+
+            <div class="rating-scale-container">
+                <h3 class="rating-scale-title">Rating Scale Guide:</h3>
+                <div class="rating-scale-grid">
+                    <div class="rating-item">
+                        <strong class="rating-1">1 = Needs Significant Improvement:</strong> Area requires immediate and focused attention; performance is well below expected level for this stage.
+                    </div>
+                    <div class="rating-item">
+                        <strong class="rating-2">2 = Developing, Inconsistent:</strong> Shows potential but lacks consistency; foundational elements may be missing or not yet habitual.
+                    </div>
+                    <div class="rating-item">
+                        <strong class="rating-3">3 = Proficient, Consistent:</strong> Demonstrates good understanding and execution; performs reliably at the expected level for this stage.
+                    </div>
+                    <div class="rating-item">
+                        <strong class="rating-4">4 = Excellent, Exceeds Expectations:</strong> Displays advanced skill or understanding; consistently performs above the expected level and may show mastery.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer p-6 text-center mt-12">
+        <p>&copy; <span id="currentYearAssessment"></span> Carlee Campbell HP1 Post Task - Physical Prep (Section B Question 4 -  Player Assessment/Evaluation Template). This is a conceptual representation for certification purposes.</p>
+    </footer>
+    <script>document.getElementById('currentYearAssessment').textContent = new Date().getFullYear();</script>
+</body>
+</html>
