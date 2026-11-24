@@ -1,212 +1,311 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Template - Player Assessment/Evaluation Sheet</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Inter', sans-serif; background-color: #FDFDFD; color: #4A5568; }
-        .header { background-color: #0A2463; color: white; }
-        .footer { background-color: #0A2463; color: white; }
-        .main-section-title { color: #0A2463; }
-        .card { background-color: white; border-radius: 0.75rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); border: 1px solid #E2E8F0; padding: 1.5rem; }
-        .button-back { background-color: #3E8E7E; color: white; padding: 0.5rem 1rem; border-radius: 0.375rem; text-decoration: none; display: inline-block; margin-bottom: 1rem; }
-        .button-back:hover { background-color: #2c6b5d; }
-        .assessment-table th, .assessment-table td { border: 1px solid #E2E8F0; padding: 0.5rem; font-size: 0.875rem; }
-        .assessment-table th { background-color: #F1F5F9; color: #0A2463; text-align: left;}
-        .form-input {
-            border: 1px solid #D1D5DB; /* Tailwind gray-300 */
-            border-radius: 0.375rem; /* rounded-md */
-            padding: 0.5rem 0.75rem; /* p-2 px-3 */
-            font-size: 0.875rem; /* text-sm */
-            width: 200px; /* Adjust as needed */
-            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* shadow-sm */
-        }
-        .form-input:focus, .form-select:focus {
-            outline: 2px solid transparent;
-            outline-offset: 2px;
-            border-color: #3E8E7E; /* Accent-1: Bright Teal */
-            box-shadow: 0 0 0 3px rgba(62, 142, 126, 0.3); /* Ring color matching accent */
-        }
-        .form-select {
-            border: 1px solid #D1D5DB;
-            border-radius: 0.375rem;
-            padding: 0.5rem 0.75rem;
-            font-size: 0.875rem;
-            width: 100px; /* Adjust as needed */
-            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
-            background-position: right 0.5rem center;
-            background-repeat: no-repeat;
-            background-size: 1.5em 1.5em;
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
-        }
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="How our association evaluates skaters and goalies in SkillShark: the HPP Program and GOALIES templates and their metric definitions." name="description"/>
+<title>Player Assessment / Evaluation - SkillShark</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+    :root {
+      --navy: #0A2463;
+      --navy-dark: #071B4A;
+      --teal: #3E8E7E;
+      --teal-dark: #2F6B5F;
+      --teal-soft: #EDF7F5;
+      --orange: #F4A261;
+      --orange-dark: #B85F1E;
+      --orange-soft: #FFF6EC;
+      --page: #FDFDFD;
+      --surface: #FFFFFF;
+      --surface-soft: #F1F5F9;
+      --surface-subtle: #F8FAFC;
+      --text: #1E293B;
+      --text-soft: #475569;
+      --text-muted: #64748B;
+      --border: #E2E8F0;
+      --font-main: 'Inter', sans-serif;
+      --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.06);
+      --shadow-md: 0 8px 22px rgba(15, 23, 42, 0.08);
+      --shadow-lg: 0 14px 32px rgba(15, 23, 42, 0.11);
+      --radius-sm: 0.5rem;
+      --radius-md: 0.75rem;
+      --radius-lg: 1rem;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; background: var(--page); }
+    body { margin: 0; padding: 0; background: var(--page); color: var(--text); font-family: var(--font-main); line-height: 1.65; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+    a { color: var(--teal-dark); text-underline-offset: .16em; }
+    a:hover { color: var(--teal); }
+    a:focus-visible, button:focus-visible { outline: 3px solid rgba(62,142,126,.5); outline-offset: 3px; border-radius: .375rem; }
+    .page-shell { width: 100%; max-width: none; margin: 0; background: transparent; }
+    .header-main { position: relative; overflow: hidden; padding: 2rem 10rem 1.8rem; background: var(--navy); color: #fff; text-align: center; box-shadow: 0 4px 14px rgba(10,36,99,.18); }
+    .header-main::after { content: ''; position: absolute; right: -6rem; bottom: -8rem; width: 18rem; height: 18rem; border: 2.5rem solid rgba(62,142,126,.14); border-radius: 50%; pointer-events: none; }
+    .eyebrow { position: relative; z-index: 1; margin: 0 0 .35rem; font-size: .82rem; font-weight: 600; letter-spacing: .105em; text-transform: uppercase; opacity: .88; }
+    .header-main h1 { position: relative; z-index: 1; margin: 0; font-size: clamp(1.85rem,4vw,2.65rem); font-weight: 700; line-height: 1.15; letter-spacing: -.025em; }
+    .subtitle { position: relative; z-index: 1; margin: .65rem 0 0; font-size: 1.05rem; opacity: .9; }
+    .home-button { position: absolute; z-index: 2; top: 50%; left: 1.5rem; display: inline-flex; align-items: center; justify-content: center; max-width: 9.5rem; padding: .58rem .9rem; border-radius: .5rem; background: var(--teal); color: #fff; font-size: .83rem; font-weight: 600; line-height: 1.3; text-align: center; text-decoration: none; transform: translateY(-50%); transition: background-color .2s ease,box-shadow .2s ease,transform .2s ease; }
+    .home-button:hover { background: var(--teal-dark); color:#fff; box-shadow:0 8px 18px rgba(0,0,0,.18); transform:translateY(calc(-50% - 1px)); }
+    .site-nav { position: sticky; top: 0; z-index: 50; display:flex; flex-wrap:wrap; justify-content:center; gap:.25rem; padding:.7rem 1rem; border-top:1px solid rgba(255,255,255,.12); background:var(--navy-dark); box-shadow:0 5px 15px rgba(15,23,42,.13); }
+    .site-nav a { padding:.52rem .82rem; border-radius:.375rem; color:#fff; font-size:.84rem; font-weight:500; line-height:1.25; text-decoration:none; transition:background-color .2s ease,color .2s ease; }
+    .site-nav a:hover,.site-nav a:focus-visible,.site-nav a.active { background:var(--teal); color:#fff; }
+    .menu-button { display:none; border:0; background:transparent; color:#fff; cursor:pointer; }
+    main { width:100%; padding:0 1rem 2.5rem; background:var(--page); }
+    .section { margin:0; padding:3.5rem 2rem; border:0; scroll-margin-top:5rem; }
+    .section:nth-of-type(even) { border-radius:var(--radius-md); background:var(--surface-soft); }
+    .section-inner { width:100%; max-width:1240px; margin:0 auto; }
+    .section-title { display:block; margin:0 0 1.6rem; padding:0; color:var(--navy); font-size:clamp(1.8rem,3vw,2.25rem); font-weight:700; line-height:1.2; letter-spacing:-.02em; }
+    .section-title::after { content:''; display:block; width:4rem; height:3px; margin-top:.75rem; border-radius:999px; background:var(--teal); }
+    .section-intro { max-width:1030px; margin:-.65rem 0 1.8rem; color:var(--text-soft); font-size:1.02rem; }
+    .identity-banner { display:grid; grid-template-columns:1.1fr .9fr; gap:1.4rem; margin-top:1.3rem; }
+    .identity-panel { padding:1.55rem; border-radius:var(--radius-lg); background:var(--navy); color:#fff; box-shadow:var(--shadow-md); }
+    .identity-panel h3 { margin:0 0 .65rem; font-size:1.45rem; }
+    .identity-panel p { margin:0; color:rgba(255,255,255,.9); }
+    .identity-call { display:block; margin-top:1rem; padding:.9rem 1rem; border-left:4px solid var(--orange); border-radius:.5rem; background:rgba(255,255,255,.10); font-weight:700; font-size:1.06rem; }
+    .non-negotiables { padding:1.45rem; border:1px solid var(--border); border-radius:var(--radius-lg); background:var(--surface); box-shadow:var(--shadow-sm); }
+    .non-negotiables h3 { margin:0 0 .6rem; color:var(--navy); }
+    .check-list,.custom-list { list-style:none; margin:.8rem 0 0; padding:0; }
+    .check-list li,.custom-list li { position:relative; margin:.5rem 0; padding-left:1.45rem; color:var(--text-soft); }
+    .check-list li::before { content:'✓'; position:absolute; left:0; top:0; color:var(--teal); font-weight:700; }
+    .custom-list li::before { content:'▹'; position:absolute; left:0; top:0; color:var(--teal); font-weight:700; }
+    .identity-grid { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:1rem; margin-top:1.3rem; }
+    .identity-card { padding:1.15rem; border:1px solid var(--border); border-top:4px solid var(--teal); border-radius:var(--radius-md); background:var(--surface); box-shadow:var(--shadow-sm); }
+    .identity-card:nth-child(3n) { border-top-color:var(--orange); }
+    .identity-card h3 { margin:0 0 .45rem; color:var(--navy); font-size:1rem; }
+    .identity-card p { margin:0; color:var(--text-soft); font-size:.89rem; }
+    .principles-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:1rem; margin-bottom:1.5rem; }
+    .principle-card { padding:1.25rem; border-radius:var(--radius-md); background:var(--surface); border:1px solid var(--border); box-shadow:var(--shadow-sm); }
+    .principle-card h3 { margin:0 0 .45rem; color:var(--navy); }
+    .principle-card p { margin:0; color:var(--text-soft); font-size:.91rem; }
+    .principle-card strong { color:var(--teal-dark); }
+    .table-wrap { overflow-x:auto; border:1px solid var(--border); border-radius:var(--radius-md); background:#fff; box-shadow:var(--shadow-sm); }
+    table { width:100%; min-width:1000px; border-collapse:collapse; }
+    th { padding:.85rem .8rem; background:var(--navy); color:#fff; text-align:left; vertical-align:top; font-size:.86rem; }
+    td { padding:.85rem .8rem; border-top:1px solid var(--border); border-right:1px solid var(--border); vertical-align:top; color:var(--text-soft); font-size:.86rem; }
+    td:last-child,th:last-child { border-right:0; }
+    tbody tr:nth-child(even) { background:#F8FAFC; }
+    .row-heading { color:var(--navy); font-weight:700; min-width:115px; }
+    .concept-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:1rem; }
+    .concept-card { position:relative; padding:1.3rem; border:1px solid var(--border); border-radius:var(--radius-lg); background:#fff; box-shadow:var(--shadow-sm); overflow:hidden; }
+    .concept-card::before { content:''; position:absolute; top:0; left:0; width:100%; height:5px; background:var(--teal); }
+    .concept-card:nth-child(2)::before,.concept-card:nth-child(4)::before { background:var(--orange); }
+    .concept-card h3 { margin:.2rem 0 .55rem; color:var(--navy); font-size:1.15rem; }
+    .concept-card p { margin:0 0 .7rem; color:var(--text-soft); font-size:.91rem; }
+    .call-grid { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:.7rem; margin-top:1.3rem; }
+    .call-chip { padding:.85rem .75rem; border:1px solid var(--border); border-radius:.65rem; background:#fff; text-align:center; box-shadow:var(--shadow-sm); }
+    .call-chip strong { display:block; color:var(--teal-dark); font-size:.9rem; letter-spacing:.04em; }
+    .call-chip span { display:block; margin-top:.2rem; color:var(--text-muted); font-size:.78rem; }
+    .interchange-panel { margin-top:1.5rem; padding:1.35rem 1.45rem; border-left:6px solid var(--orange); border-radius:var(--radius-md); background:var(--orange-soft); }
+    .interchange-panel h3 { margin:0 0 .45rem; color:var(--navy); }
+    .interchange-panel p { margin:0; color:var(--text-soft); }
+    .system-panel { display:grid; grid-template-columns:.88fr 1.12fr; gap:1.2rem; margin-top:1.2rem; }
+    .system-card { padding:1.3rem; border:1px solid var(--border); border-radius:var(--radius-lg); background:#fff; box-shadow:var(--shadow-sm); }
+    .system-card h3 { margin:0 0 .55rem; color:var(--navy); }
+    .system-card p { margin:.35rem 0; color:var(--text-soft); font-size:.92rem; }
+    .system-card strong { color:var(--teal-dark); }
+    .read-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem; margin-top:1rem; }
+    .read-card { padding:1.15rem; border-radius:var(--radius-md); border:1px solid var(--border); background:#fff; }
+    .read-card h3 { margin:0 0 .4rem; color:var(--navy); }
+    .read-card p { margin:0; color:var(--text-soft); font-size:.9rem; }
+    .read-card.carry { border-top:5px solid var(--teal); }
+    .read-card.chip { border-top:5px solid var(--orange); }
+    .read-card.regroup { border-top:5px solid var(--navy); }
+    .diagram-note { margin:-.45rem 0 1rem; color:var(--text-muted); font-size:.9rem; }
+    .diagram-key { display:flex; flex-wrap:wrap; align-items:center; gap:.65rem 1rem; margin:0 0 1.6rem; padding:.85rem 1rem; border:1px solid var(--border); border-radius:var(--radius-md); background:#fff; color:var(--text-soft); font-size:.82rem; box-shadow:var(--shadow-sm); }
+    .key-item { display:inline-flex; align-items:center; gap:.35rem; }
+    .key-line { width:2.2rem; height:0; border-top:4px solid var(--teal); border-radius:999px; }
+    .key-line.defence { border-top-color:var(--navy); }
+    .key-line.puck-path { border-top:4px dashed var(--orange-dark); }
+    .key-line.opposition { border-top:4px dashed var(--text-muted); }
+    .key-puck { width:.75rem; height:.75rem; border-radius:50%; background:#111827; border:2px solid var(--orange); }
+    .practice-chain { display:grid; gap:1.7rem; }
+    .drill-step { position:relative; display:grid; grid-template-columns:3.2rem 1fr; gap:1rem; align-items:start; }
+    .step-number { position:sticky; top:5.3rem; display:flex; align-items:center; justify-content:center; width:3rem; height:3rem; border-radius:999px; background:var(--teal); color:#fff; font-size:1.15rem; font-weight:700; box-shadow:var(--shadow-md); }
+    .transition .step-number { background:var(--navy); }
+    .entry .step-number { background:var(--orange-dark); }
+    .ozone .step-number { background:var(--teal-dark); }
+    .drill-card { overflow:hidden; border:1px solid var(--border); border-radius:var(--radius-lg); background:#fff; box-shadow:var(--shadow-md); transition:transform .2s ease,box-shadow .2s ease; }
+    .drill-card:hover { transform:translateY(-2px); box-shadow:var(--shadow-lg); }
+    .drill-meta { padding:1.2rem 1.35rem 1rem; border-top:5px solid var(--teal); }
+    .transition .drill-meta { border-top-color:var(--navy); }
+    .entry .drill-meta { border-top-color:var(--orange); }
+    .ozone .drill-meta { border-top-color:var(--teal-dark); }
+    .drill-type { display:inline-block; margin-bottom:.4rem; padding:.26rem .55rem; border-radius:999px; background:var(--teal-soft); color:var(--teal-dark); font-size:.73rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase; }
+    .transition .drill-type { background:#EEF2FF; color:var(--navy); }
+    .entry .drill-type { background:var(--orange-soft); color:var(--orange-dark); }
+    .ozone .drill-type { background:var(--teal-soft); color:var(--teal-dark); }
+    .drill-meta h3 { margin:0; color:var(--navy); font-size:clamp(1.25rem,2vw,1.55rem); line-height:1.25; }
+    .drill-objective { margin:.5rem 0 0; color:var(--text-soft); font-size:.9rem; }
+    .drill-objective strong { color:var(--teal-dark); }
+    .principle-tags { display:flex; flex-wrap:wrap; gap:.4rem; margin-top:.65rem; }
+    .principle-tag { padding:.23rem .48rem; border:1px solid var(--border); border-radius:999px; background:var(--surface-subtle); color:var(--text-muted); font-size:.72rem; font-weight:600; }
+    .drill-diagram-shell { padding:.8rem 1rem 1rem; background:#F8FAFC; border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+    .drill-diagram { display:block; width:100%; height:auto; max-height:610px; margin:0 auto; }
+    .zone-diagram { max-height:650px; }
+    .screenshot-guide { display:flex; flex-wrap:wrap; align-items:center; gap:.65rem .75rem; margin:0 0 1.6rem; padding:.9rem 1rem; border:1px solid var(--border); border-radius:var(--radius-md); background:#fff; color:var(--text-soft); font-size:.82rem; box-shadow:var(--shadow-sm); }
+    .screenshot-guide > strong { color:var(--navy); }
+    .guide-chip { display:inline-flex; align-items:center; min-height:1.9rem; padding:.32rem .58rem; border:1px solid #CFE4DF; border-radius:999px; background:var(--teal-soft); color:var(--teal-dark); font-size:.76rem; font-weight:600; }
+    .drill-screenshot-shell { padding:1rem; background:#F8FAFC; border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+    .screenshot-slot { margin:0; }
+    .screenshot-placeholder { position:relative; display:flex; width:100%; min-height:340px; aspect-ratio:16 / 9; flex-direction:column; align-items:center; justify-content:center; overflow:hidden; padding:2rem; border:2px dashed rgba(62,142,126,.68); border-radius:.9rem; background-color:#FFFFFF; background-image:linear-gradient(135deg,rgba(62,142,126,.045) 25%,transparent 25%),linear-gradient(225deg,rgba(62,142,126,.045) 25%,transparent 25%),linear-gradient(45deg,rgba(10,36,99,.035) 25%,transparent 25%),linear-gradient(315deg,rgba(10,36,99,.035) 25%,#FFFFFF 25%); background-position:18px 0,18px 0,0 0,0 0; background-size:36px 36px; color:var(--text-soft); text-align:center; }
+    .screenshot-placeholder::after { content:''; position:absolute; inset:.65rem; border:1px solid rgba(10,36,99,.08); border-radius:.65rem; pointer-events:none; }
+    .placeholder-number { position:absolute; z-index:1; top:1.15rem; left:1.15rem; display:inline-flex; align-items:center; min-height:1.9rem; padding:.32rem .62rem; border-radius:999px; background:var(--navy); color:#fff; font-size:.72rem; font-weight:700; letter-spacing:.055em; text-transform:uppercase; box-shadow:var(--shadow-sm); }
+    .placeholder-status { position:absolute; z-index:1; top:1.15rem; right:1.15rem; display:inline-flex; align-items:center; min-height:1.9rem; padding:.32rem .62rem; border:1px solid #F6C99F; border-radius:999px; background:var(--orange-soft); color:var(--orange-dark); font-size:.72rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase; }
+    .placeholder-icon { position:relative; z-index:1; display:flex; align-items:center; justify-content:center; width:4rem; height:4rem; margin-bottom:.9rem; border:2px solid rgba(62,142,126,.36); border-radius:1rem; background:var(--teal-soft); color:var(--teal-dark); font-size:2.15rem; font-weight:500; line-height:1; box-shadow:var(--shadow-sm); }
+    .screenshot-placeholder h4 { position:relative; z-index:1; max-width:820px; margin:0; color:var(--navy); font-size:clamp(1.15rem,2.1vw,1.55rem); line-height:1.3; }
+    .screenshot-placeholder p { position:relative; z-index:1; max-width:760px; margin:.65rem 0 0; color:var(--text-soft); font-size:.91rem; }
+    .placeholder-file { position:relative; z-index:1; display:inline-flex; max-width:100%; margin-top:.85rem; padding:.42rem .68rem; border:1px solid var(--border); border-radius:.5rem; background:#F8FAFC; color:var(--text-muted); font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace; font-size:.76rem; overflow-wrap:anywhere; }
+    .screenshot-credit { display:grid; grid-template-columns:1fr 1.35fr; gap:.75rem; margin:0; padding:.8rem 1rem; border:1px solid var(--border); border-top:0; border-radius:0 0 .75rem .75rem; background:#fff; color:var(--text-muted); font-size:.77rem; }
+    .credit-field { min-width:0; }
+    .credit-field strong { color:var(--teal-dark); }
+    .drill-screenshot { display:block; width:100%; max-height:650px; margin:0 auto; border-radius:.8rem; object-fit:contain; background:#fff; }
 
+    .drill-details { display:grid; grid-template-columns:1fr 1.35fr 1.2fr; gap:0; }
+    .detail-block { padding:1.15rem 1.25rem; border-right:1px solid var(--border); }
+    .detail-block:last-child { border-right:0; }
+    .detail-block > strong { display:block; margin-bottom:.4rem; color:var(--navy); font-size:.92rem; text-transform:uppercase; letter-spacing:.035em; }
+    .detail-block p { margin:0; color:var(--text-soft); font-size:.87rem; }
+    .teaching-block { background:var(--teal-soft); }
+    .teaching-point-list { margin:.35rem 0 0; padding-left:1.3rem; color:var(--text-soft); font-size:.85rem; }
+    .teaching-point-list li { margin:.38rem 0; padding-left:.15rem; }
+    .teaching-point-list li::marker { color:var(--teal-dark); font-weight:700; }
+    .tracking-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:1rem; }
+    .tracking-card { padding:1.1rem; border:1px solid var(--border); border-left:5px solid var(--orange); border-radius:var(--radius-md); background:#fff; box-shadow:var(--shadow-sm); }
+    .tracking-card h3 { margin:0 0 .35rem; color:var(--navy); font-size:1rem; }
+    .tracking-card p { margin:0; color:var(--text-soft); font-size:.85rem; }
+    .summary-banner { margin-top:1.4rem; padding:1.25rem 1.35rem; border-radius:var(--radius-lg); background:var(--navy); color:#fff; box-shadow:var(--shadow-md); }
+    .summary-banner strong { color:#FFD1AA; }
+    .summary-banner p { margin:0; }
+    footer { background:var(--navy); color:#fff; margin-top:0; }
+    footer .footer-inner { max-width:1240px; margin:0 auto; padding:1.4rem 1rem; text-align:center; font-size:.8rem; opacity:.92; }
+    footer p { margin:.2rem 0; }
+    @media(max-width:1100px) { .identity-grid{grid-template-columns:repeat(3,1fr)} .principles-grid,.concept-grid{grid-template-columns:repeat(2,1fr)} .call-grid{grid-template-columns:repeat(3,1fr)} .tracking-grid{grid-template-columns:repeat(2,1fr)} .drill-details{grid-template-columns:1fr 1fr} .teaching-block{grid-column:1/-1;border-top:1px solid var(--border)} .detail-block:nth-child(2){border-right:0} }
+    @media(max-width:800px) { .header-main{padding:1.65rem 4rem 1.45rem} .home-button{position:static; transform:none; margin-bottom:1rem; max-width:none} .home-button:hover{transform:translateY(-1px)} .site-nav{justify-content:flex-start; flex-wrap:nowrap; overflow-x:auto} .site-nav a{white-space:nowrap} .section{padding:2.6rem 1rem} .identity-banner,.system-panel{grid-template-columns:1fr} .identity-grid{grid-template-columns:repeat(2,1fr)} .principles-grid,.concept-grid{grid-template-columns:1fr 1fr} .read-grid{grid-template-columns:1fr} .drill-step{grid-template-columns:1fr} .step-number{position:static; width:2.6rem; height:2.6rem; margin-bottom:-.4rem} .drill-details{grid-template-columns:1fr} .detail-block{border-right:0;border-bottom:1px solid var(--border)} .detail-block:last-child{border-bottom:0} }
+    @media(max-width:540px) { main{padding:0 .45rem 1.5rem} .header-main{padding:1.4rem .8rem} .header-main h1{font-size:1.65rem} .subtitle{font-size:.93rem} .section{padding:2.15rem .65rem} .identity-grid,.principles-grid,.concept-grid,.call-grid,.tracking-grid{grid-template-columns:1fr} .drill-meta,.detail-block{padding:1rem} .drill-diagram-shell{padding:.35rem} .diagram-key{align-items:flex-start} .drill-screenshot-shell{padding:.45rem} .screenshot-placeholder{min-height:300px;aspect-ratio:auto;padding:4.5rem 1rem 2rem} .placeholder-number,.placeholder-status{top:.85rem} .placeholder-number{left:.85rem} .placeholder-status{right:.85rem} .screenshot-credit{grid-template-columns:1fr} }
+    @media print { .site-nav,.home-button{display:none} body,main{background:#fff} .section{padding:1.5rem .5rem;break-inside:auto} .drill-card,.identity-card,.principle-card,.concept-card,.tracking-card{box-shadow:none} .drill-step{break-inside:avoid-page} .step-number{position:static} }
+  
+    /* Detailed drill instruction layout */
+    .drill-details { grid-template-columns: minmax(230px,.8fr) minmax(0,2.2fr); }
+    .detail-block:nth-child(2) { border-right: 0; }
+    .teaching-block { grid-column: 1 / -1; border-top: 1px solid var(--border); border-right: 0; }
+    .instruction-list { margin:.3rem 0 0; padding-left:1.35rem; color:var(--text-soft); font-size:.87rem; }
+    .instruction-list li { margin:.62rem 0; padding-left:.18rem; }
+    .instruction-list li::marker { color:var(--orange-dark); font-weight:700; }
+    .instruction-list strong { color:var(--navy); }
+    .progression-note { margin-top:.85rem; padding:.8rem .9rem; border-left:4px solid var(--orange); border-radius:.55rem; background:var(--orange-soft); color:var(--text-soft); font-size:.84rem; }
+    .progression-note strong { color:var(--orange-dark); }
+    .research-note { margin:-.35rem 0 1rem; padding:.9rem 1rem; border-left:5px solid var(--teal); border-radius:.6rem; background:var(--teal-soft); color:var(--text-soft); font-size:.86rem; }
+    .research-note strong { color:var(--teal-dark); }
+    .reference-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem; }
+    .reference-card { padding:1.1rem 1.15rem; border:1px solid var(--border); border-top:4px solid var(--teal); border-radius:var(--radius-md); background:#fff; box-shadow:var(--shadow-sm); }
+    .reference-card:nth-child(3n) { border-top-color:var(--orange); }
+    .reference-org { display:block; margin-bottom:.25rem; color:var(--text-muted); font-size:.72rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; }
+    .reference-card h3 { margin:0 0 .4rem; color:var(--navy); font-size:1rem; line-height:1.35; }
+    .reference-card h3 a { color:var(--navy); text-decoration-thickness:1px; }
+    .reference-card h3 a:hover { color:var(--teal-dark); }
+    .reference-card p { margin:0; color:var(--text-soft); font-size:.84rem; }
+    @media(max-width:1100px) { .drill-details{grid-template-columns:minmax(210px,.85fr) minmax(0,2.15fr)} }
+    @media(max-width:800px) { .drill-details{grid-template-columns:1fr} .teaching-block{grid-column:auto} .reference-grid{grid-template-columns:1fr} }
+    @media print { .instruction-list{font-size:.82rem} .progression-note{font-size:.8rem} .reference-card{break-inside:avoid} }
 
-        /* New Rating Scale Styles */
-        .rating-scale-container { margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid #E2E8F0; }
-        .rating-scale-title { font-weight: 600; color: #0A2463; margin-bottom: 0.75rem; font-size: 0.875rem; } /* text-sm equivalent */
-        .rating-scale-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75rem; }
-        .rating-item { background-color: #F9FAFB; border: 1px solid #E5E7EB; border-radius: 0.5rem; padding: 0.75rem; font-size: 0.875rem; }
-        .rating-item strong { font-weight: 600; }
-        .rating-1 { color: #DC2626; } /* Red-600 */
-        .rating-2 { color: #F59E0B; } /* Amber-500 */
-        .rating-3 { color: #10B981; } /* Emerald-500 */
-        .rating-4 { color: #2563EB; } /* Blue-600 */
-
-    </style>
+    .home-button { max-width: 10.5rem; }
+    .scale-row { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:.7rem; margin:0 0 1.6rem; }
+    .scale-chip { padding:.75rem .85rem; border:1px solid var(--border); border-top:4px solid var(--teal); border-radius:.65rem; background:#fff; font-size:.82rem; color:var(--text-soft); }
+    .scale-chip strong { display:block; color:var(--navy); font-size:.95rem; }
+    .ss-layout { display:grid; grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr); gap:1.4rem; align-items:start; }
+    .ss-shot { position:sticky; top:5rem; margin:0; padding:.9rem; border:1px solid var(--border); border-radius:var(--radius-lg); background:#fff; box-shadow:var(--shadow-md); }
+    .ss-shot img { display:block; width:100%; height:auto; border-radius:.55rem; }
+    .metric-list { display:grid; gap:.8rem; }
+    .metric-card { padding:1rem 1.1rem; border:1px solid var(--border); border-left:4px solid var(--teal); border-radius:var(--radius-md); background:#fff; box-shadow:var(--shadow-sm); }
+    .metric-card:nth-child(2n) { border-left-color:var(--orange); }
+    .metric-top { display:flex; gap:.7rem; align-items:center; }
+    .metric-num { display:flex; flex:none; align-items:center; justify-content:center; width:2.1rem; height:2.1rem; border-radius:.55rem; background:#EAF2FF; color:#2F6FEB; font-weight:700; font-size:.9rem; }
+    .metric-card h3 { margin:0; color:var(--navy); font-size:1.02rem; }
+    .metric-score { color:var(--text-muted); font-size:.78rem; }
+    .metric-card .check-list { margin-top:.5rem; }
+    .metric-card .check-list li { font-size:.85rem; margin:.3rem 0; }
+    @media(max-width:1000px) { .ss-layout{grid-template-columns:1fr} .ss-shot{position:static} .scale-row{grid-template-columns:repeat(3,1fr)} }
+    @media(max-width:600px) { .scale-row{grid-template-columns:1fr} }
+</style>
 </head>
-<body class="text-slate-700">
-    <header class="header p-4 shadow-md">
-        <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-xl sm:text-2xl font-bold">Player Assessment/Evaluation Sheet Template</h1>
-            <a href="https://ccampbell1988.github.io/HP1-Post-Task-Section-B-Question-4/" class="button-back">← Back to Physical Prep</a>
-        </div>
-    </header>
-
-    <main class="container mx-auto p-4 md:p-8 mt-4">
-        <div class="card">
-            <h2 class="main-section-title text-2xl font-bold mb-6">Player Assessment</h2>
-            <p class="mb-4 text-sm text-slate-600">This template is for tracking individual player skills, strengths, weaknesses, and progress on Critical Fitness Variables (CFVs). Ratings (e.g., 1-Needs Work, 2-Developing, 3-Proficient, 4-Excellent) can be applied. Include specific comments for actionable feedback.</p>
-            
-            <div class="mb-6 grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
-                <div>
-                    <label for="playerName" class="block text-sm font-medium text-slate-700">Player Name:</label>
-                    <input type="text" id="playerName" name="playerName" class="form-input mt-1">
-                </div>
-                <div>
-                    <label for="assessmentDate" class="block text-sm font-medium text-slate-700">Date:</label>
-                    <input type="date" id="assessmentDate" name="assessmentDate" class="form-input mt-1">
-                </div>
-                <div>
-                    <label for="playerPosition" class="block text-sm font-medium text-slate-700">Position:</label>
-                    <select id="playerPosition" name="playerPosition" class="form-select mt-1">
-                        <option value="">Select...</option>
-                        <option value="F">Forward (F)</option>
-                        <option value="D">Defence (D)</option>
-                        <option value="G">Goaltender (G)</option>
-                    </select>
-                </div>
-                <div>
-                    <label for="evaluatorName" class="block text-sm font-medium text-slate-700">Evaluator:</label>
-                    <input type="text" id="evaluatorName" name="evaluatorName" class="form-input mt-1">
-                </div>
-            </div>
-
-            <div class="overflow-x-auto">
-                <table class="w-full assessment-table">
-                    <thead>
-                        <tr>
-                            <th>Category/Skill</th>
-                            <th>Sub-Component</th>
-                            <th>Rating (1-4)</th>
-                            <th>Comments/Observations</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td rowspan="3" class="font-semibold">Skating</td>
-                            <td>Agility & Edge Work</td>
-                            <td><input type="number" min="1" max="4" class="w-16 p-1 border rounded form-input"></td>
-                            <td><textarea rows="1" class="w-full p-1 border rounded form-input"></textarea></td>
-                        </tr>
-                        <tr>
-                            <td>Speed & Acceleration</td>
-                            <td><input type="number" min="1" max="4" class="w-16 p-1 border rounded form-input"></td>
-                            <td><textarea rows="1" class="w-full p-1 border rounded form-input"></textarea></td>
-                        </tr>
-                        <tr>
-                            <td>Transitions (Fwd-Bwd)</td>
-                            <td><input type="number" min="1" max="4" class="w-16 p-1 border rounded form-input"></td>
-                            <td><textarea rows="1" class="w-full p-1 border rounded form-input"></textarea></td>
-                        </tr>
-                        <tr>
-                            <td rowspan="3" class="font-semibold">Puck Control</td>
-                            <td>Creativity & Deception</td>
-                            <td><input type="number" min="1" max="4" class="w-16 p-1 border rounded form-input"></td>
-                            <td><textarea rows="1" class="w-full p-1 border rounded form-input"></textarea></td>
-                        </tr>
-                        <tr>
-                            <td>Protection Under Pressure</td>
-                            <td><input type="number" min="1" max="4" class="w-16 p-1 border rounded form-input"></td>
-                            <td><textarea rows="1" class="w-full p-1 border rounded form-input"></textarea></td>
-                        </tr>
-                         <tr>
-                            <td>Small Area Skills</td>
-                            <td><input type="number" min="1" max="4" class="w-16 p-1 border rounded form-input"></td>
-                            <td><textarea rows="1" class="w-full p-1 border rounded form-input"></textarea></td>
-                        </tr>
-                        <tr>
-                            <td rowspan="2" class="font-semibold">Shooting</td>
-                            <td>Quick Release & Accuracy</td>
-                            <td><input type="number" min="1" max="4" class="w-16 p-1 border rounded form-input"></td>
-                            <td><textarea rows="1" class="w-full p-1 border rounded form-input"></textarea></td>
-                        </tr>
-                        <tr>
-                            <td>Shot Selection & Mentality</td>
-                            <td><input type="number" min="1" max="4" class="w-16 p-1 border rounded form-input"></td>
-                            <td><textarea rows="1" class="w-full p-1 border rounded form-input"></textarea></td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">Passing</td>
-                            <td>Accuracy & Reception (Fwd/Bwd)</td>
-                            <td><input type="number" min="1" max="4" class="w-16 p-1 border rounded form-input"></td>
-                            <td><textarea rows="1" class="w-full p-1 border rounded form-input"></textarea></td>
-                        </tr>
-                        <tr>
-                            <td rowspan="2" class="font-semibold">Defensive Skills</td>
-                            <td>Angling & Gap Control</td>
-                            <td><input type="number" min="1" max="4" class="w-16 p-1 border rounded form-input"></td>
-                            <td><textarea rows="1" class="w-full p-1 border rounded form-input"></textarea></td>
-                        </tr>
-                         <tr>
-                            <td>Stick Work & Puck Separation</td>
-                            <td><input type="number" min="1" max="4" class="w-16 p-1 border rounded form-input"></td>
-                            <td><textarea rows="1" class="w-full p-1 border rounded form-input"></textarea></td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">Compete Level</td>
-                            <td>Battles, Puck Pursuit, Toughness</td>
-                            <td><input type="number" min="1" max="4" class="w-16 p-1 border rounded form-input"></td>
-                            <td><textarea rows="1" class="w-full p-1 border rounded form-input"></textarea></td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold">Hockey Sense</td>
-                            <td>Awareness, Decision Making</td>
-                            <td><input type="number" min="1" max="4" class="w-16 p-1 border rounded form-input"></td>
-                            <td><textarea rows="1" class="w-full p-1 border rounded form-input"></textarea></td>
-                        </tr>
-                        </tbody>
-                </table>
-            </div>
-
-            <div class="rating-scale-container">
-                <h3 class="rating-scale-title">Rating Scale Guide:</h3>
-                <div class="rating-scale-grid">
-                    <div class="rating-item">
-                        <strong class="rating-1">1 = Needs Significant Improvement:</strong> Area requires immediate and focused attention; performance is well below expected level for this stage.
-                    </div>
-                    <div class="rating-item">
-                        <strong class="rating-2">2 = Developing, Inconsistent:</strong> Shows potential but lacks consistency; foundational elements may be missing or not yet habitual.
-                    </div>
-                    <div class="rating-item">
-                        <strong class="rating-3">3 = Proficient, Consistent:</strong> Demonstrates good understanding and execution; performs reliably at the expected level for this stage.
-                    </div>
-                    <div class="rating-item">
-                        <strong class="rating-4">4 = Excellent, Exceeds Expectations:</strong> Displays advanced skill or understanding; consistently performs above the expected level and may show mastery.
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <footer class="footer p-6 text-center mt-12">
-        <p>&copy; <span id="currentYearAssessment"></span> Carlee Campbell HP1 Post Task - Physical Prep (Section B Question 4 -  Player Assessment/Evaluation Template). This is a conceptual representation for certification purposes.</p>
-    </footer>
-    <script>document.getElementById('currentYearAssessment').textContent = new Date().getFullYear();</script>
+<body>
+<div class="page-shell">
+<header class="header-main">
+<a class="home-button" href="https://ccampbell1988.github.io/HP1-Post-Task-Section-B-Question-4/">&larr; Back to Physical Prep</a>
+<p class="eyebrow">Hockey Canada High Performance 1 | Section B</p>
+<h1>Player Assessment / Evaluation</h1>
+<p class="subtitle">How we evaluate skaters and goalies in SkillShark</p>
+</header>
+<nav aria-label="Page sections" class="site-nav">
+<a href="#overview">Overview</a>
+<a href="#hpp">Skaters (HPP)</a>
+<a href="#goalies">Goalies</a>
+<a href="#physical-prep">Physical Prep Link</a></nav>
+<main>
+<section class="section" id="overview">
+<div class="section-inner">
+<h2 class="section-title">How We Evaluate Players</h2>
+<p class="section-intro">Our association (Oakville Hornets) evaluates every player in SkillShark. Each player is scored on the same set of metrics, using shared written definitions, so ratings mean the same thing no matter which evaluator gives them. Skaters are evaluated with the HPP Program template and goalies with the GOALIES template. Both use a "Top 10 Fundamentals" skill with ten metrics.</p>
+<div class="tracking-grid">
+<article class="tracking-card"><h3>Skaters: HPP Program</h3><p>Top 10 Fundamentals: ten metrics, each a subjective score from 0 to 5.</p></article>
+<article class="tracking-card"><h3>Goalies: GOALIES</h3><p>Top 10 Fundamentals built for goaltending: ten metrics scored 0 to 5 in half-point steps.</p></article>
+<article class="tracking-card"><h3>When</h3><p>Start of season, midseason and end of season, so each player's progress can be compared over time.</p></article>
+<article class="tracking-card"><h3>Privacy</h3><p>Only the evaluation templates are shown here. Individual player scores stay in SkillShark and are shared with players and families directly.</p></article>
+</div>
+<h3 class="scale-heading" style="margin:1.8rem 0 .7rem;color:var(--navy)">Rating Anchors</h3>
+<div class="scale-row">
+<div class="scale-chip"><strong>1</strong>Rarely demonstrates this quality (well below age expectations)</div>
+<div class="scale-chip"><strong>2</strong>Sometimes shows ability but inconsistent</div>
+<div class="scale-chip"><strong>3</strong>Meets age-level expectations</div>
+<div class="scale-chip"><strong>4</strong>Consistently strong in this area, above average</div>
+<div class="scale-chip"><strong>5</strong>Elite for this age group, a difference-maker</div>
+</div>
+</div>
+</section>
+<section class="section" id="hpp">
+<div class="section-inner">
+<h2 class="section-title">Skaters: HPP Program Template</h2>
+<p class="section-intro">The ten metrics evaluators score for every skater, with our association's definition for each.</p>
+<div class="ss-layout">
+<figure class="ss-shot"><img alt="SkillShark HPP Program template: Top 10 Fundamentals skill with ten metrics, Coachability, Teammate, Compete Level, Plays with Speed, Skating, Individual Puck Skills, Transitional Play, Offensive Team Play, Defensive Team Play and Hockey IQ, each a subjective score from 0 to 5." src="skillshark/hpp-top10.jpg"/></figure>
+<div class="metric-list"><article class="metric-card"><div class="metric-top"><span class="metric-num">1</span><div><h3>Coachability</h3><span class="metric-score">Subjective Score (0-5)</span></div></div><ul class="check-list"><li>Willingness to learn, adapt, and apply feedback consistently.</li><li>Demonstrates openness to instruction and makes adjustments quickly in practices and games.</li><li>Shows respect for teammates and staff by listening, asking questions, and staying engaged.</li><li>Displays discipline in executing team systems and responsibilities. Maintains a positive attitude, resilience, and growth mindset when challenged.</li><li>Consistency in effort and response to feedback makes the player dependable and trustworthy in all situations.</li></ul></article><article class="metric-card"><div class="metric-top"><span class="metric-num">2</span><div><h3>Teammate</h3><span class="metric-score">Subjective Score (0-5)</span></div></div><ul class="check-list"><li>Shows humility and puts team success above individual recognition.</li><li>Communicates clearly on and off the ice, building trust through reliability and accountability.</li><li>Supports teammates by encouraging, celebrating successes, and lifting others during challenges.</li><li>Demonstrates respect, unselfishness, and commitment to shared goals. A strong teammate positively impacts culture, strengthens cohesion, and makes those around them better.</li></ul></article><article class="metric-card"><div class="metric-top"><span class="metric-num">3</span><div><h3>Compete Level</h3><span class="metric-score">Subjective Score (0-5)</span></div></div><ul class="check-list"><li>Engagement in battles.</li><li>Ability/willingness to win battles.</li><li>Working hard with and without the puck.</li><li>Physicality with and without the puck.</li><li>Strength in battle situations regardless of size (balance and stability on skates).</li><li>Work ethic.</li><li>Works to get to open spaces, net drives, body positioning.</li><li>Consistency of effort.</li></ul></article><article class="metric-card"><div class="metric-top"><span class="metric-num">4</span><div><h3>Plays with Speed</h3><span class="metric-score">Subjective Score (0-5)</span></div></div><ul class="check-list"><li>Executes plays at high pace.</li><li>Advances puck to open players.</li><li>Chips, indirect passes to open spaces for teammates to skate into.</li><li>Decision making: knows what to do before getting pressured.</li><li>Allows team to create/maintain speed with their decisions.</li><li>Keeps feet moving with the puck.</li><li>Can create opportunities/shots for themselves and others at a high pace.</li></ul></article><article class="metric-card"><div class="metric-top"><span class="metric-num">5</span><div><h3>Skating</h3><span class="metric-score">Subjective Score (0-5)</span></div></div><ul class="check-list"><li>Power in stride.</li><li>Balance: stops/starts/pivots. Agility: deceptiveness, pivots, foot work, foot speed.</li><li>Edges: ability to use edges/flats for varying situations.</li><li>Speed: includes 1st step acceleration, top end speed, change of pace, ability to create separation.</li><li>Transition: ability to change direction.</li><li>For D: lateral agility, transition, change of direction, backwards power, ability to be evasive/elusive, create shooting lanes for themselves through their skating.</li><li>For Fwds: small space quickness, open ice power, explosive speed.</li></ul></article><article class="metric-card"><div class="metric-top"><span class="metric-num">6</span><div><h3>Individual Puck Skills</h3><span class="metric-score">Subjective Score (0-5)</span></div></div><ul class="check-list"><li>Pass, pass receive: both forehand and backhand.</li><li>Puck protection. Shot: strength in shot, ability to get it off quickly, variety of shots, ability to shoot in stride, hits the net/not blocked.</li><li>Deceptive ability through fakes, dekes, buying time with the puck. Net drive with puck protection, power forward.</li><li>Hand eye coordination.</li><li>Playmaking ability.</li></ul></article><article class="metric-card"><div class="metric-top"><span class="metric-num">7</span><div><h3>Transitional Play</h3><span class="metric-score">Subjective Score (0-5)</span></div></div><ul class="check-list"><li>Quick recognition of turnovers and ability to move the puck efficiently from defense to offense.</li><li>Makes smart first passes or controlled carries under pressure.</li><li>Supports teammates by providing outlets and options for clean exits and entries.</li><li>Reads developing plays through the neutral zone, using speed and awareness to create odd-man opportunities or slow down opposing transitions.</li><li>Maintains composure under pressure, advancing possession while limiting risk.</li><li>Players who excel in transition keep the team moving forward, sustain pace, and create scoring chances by turning defense into attack.</li></ul></article><article class="metric-card"><div class="metric-top"><span class="metric-num">8</span><div><h3>Offensive Team Play</h3><span class="metric-score">Subjective Score (0-5)</span></div></div><ul class="check-list"><li>Ability to see play developing.</li><li>Puck support.</li><li>Ability to see open ice (either for chipping pucks to teammates or to move to open ice to receive puck).</li><li>Ability to create scoring chances for themselves and teammates.</li><li>Being a threat to shoot or pass.</li><li>Team possession continues because of this player.</li></ul></article><article class="metric-card"><div class="metric-top"><span class="metric-num">9</span><div><h3>Defensive Team Play</h3><span class="metric-score">Subjective Score (0-5)</span></div></div><ul class="check-list"><li>Strong positioning and awareness; stays between opponent and net.</li><li>Active stick to disrupt passing and shooting lanes.</li><li>Maintains good gap control without overcommitting.</li><li>Communicates effectively in coverage and provides support.</li><li>Executes defensive zone responsibilities: boxing out, net-front battles, crease protection, and winning pucks under pressure. Retrieves and exits with composure, making smart first passes to transition play.</li><li>Applies consistent back pressure, tracks through the neutral zone, and disrupts rushes. Blocks shots, uses disciplined physical play, and avoids unnecessary penalties. Trusted in key moments for reliability and consistency.</li></ul></article><article class="metric-card"><div class="metric-top"><span class="metric-num">10</span><div><h3>Hockey IQ</h3><span class="metric-score">Subjective Score (0-5)</span></div></div><ul class="check-list"><li>Poise in decision making in pressure situations.</li><li>Vision: making reads before getting the puck.</li><li>Anticipation: both offensively and defensively.</li><li>Head on swivel.</li><li>Decisions allow team to maintain possession of puck or to get possession of puck.</li><li>Spatial awareness.</li><li>Use of stick to cover passing/shooting skating lanes.</li><li>Use of stick to create turnovers (stick on puck).</li></ul></article></div>
+</div>
+</div>
+</section>
+<section class="section" id="goalies">
+<div class="section-inner">
+<h2 class="section-title">Goalies: GOALIES Template</h2>
+<p class="section-intro">Goalies have their own ten fundamentals, scored in half-point steps so smaller improvements in technique show up between evaluations.</p>
+<div class="ss-layout">
+<figure class="ss-shot"><img alt="SkillShark GOALIES template: Top 10 Fundamentals skill with ten metrics, Stance and Positioning, Crease Movement / Skating, Rebound control, Save Technique / Mechanics, Tracking, Puck Handling / Playmaking, Battle / Compete, Coachability, Mental Toughness and Teammate, each a subjective score from 0 to 5." src="skillshark/goalies-top10.jpg"/></figure>
+<div class="metric-list"><article class="metric-card"><div class="metric-top"><span class="metric-num">1</span><div><h3>Stance and Positioning</h3><span class="metric-score">Subjective Score (0-5, half-point steps)</span></div></div><ul class="check-list"><li>How the goalie positions themselves relative to the puck.</li><li>Angle: Maintains middle net coverage relative to the puck.</li><li>Square: Shoulders, hips, and toes stay aligned and facing the puck.</li><li>Depth: Adjusts positioning in and out of the crease based on play location and pressure.</li><li>Moves efficiently around the crease in an athletic stance with gloves out and stick covering the five-hole; relaxed when play is on the periphery, active and engaged when play is in tight.</li></ul></article><article class="metric-card"><div class="metric-top"><span class="metric-num">2</span><div><h3>Crease Movement / Skating</h3><span class="metric-score">Subjective Score (0-5, half-point steps)</span></div></div><ul class="check-list"><li>Power, balance, and efficiency with all movement types; quick, controlled transitions with minimal excess motion.</li><li>Feet to Feet: C-cuts, shuffles, and T-pushes, staying in stance with head and hands forward.</li><li>Feet to Knees: Dropping into butterfly and slides.</li><li>Knees to Knees: Pushes in their butterfly.</li></ul></article><article class="metric-card"><div class="metric-top"><span class="metric-num">3</span><div><h3>Rebound Control</h3><span class="metric-score">Subjective Score (0-5, half-point steps)</span></div></div><ul class="check-list"><li>Absorbs shots into the body or directs pucks to the corners and low-danger areas.</li><li>Uses stick, pads, and blocker to minimize second-chance opportunities; catches pucks cleanly.</li><li>Reacts quickly to loose pucks and covers the puck when necessary.</li><li>Expected on low-danger shots; on high-danger shots the focus is tracking, recovering, and reacting after the first save.</li></ul></article><article class="metric-card"><div class="metric-top"><span class="metric-num">4</span><div><h3>Save Technique / Mechanics</h3><span class="metric-score">Subjective Score (0-5, half-point steps)</span></div></div><ul class="check-list"><li>Executes foundational saves: butterfly, glove, blocker, stick, and post integrations (RVH / post lean).</li><li>Maintains posture and balance while moving efficiently into the puck, staying controlled and on angle.</li><li>Reads the play to select the right save and executes with precision, timing, and control.</li></ul></article><article class="metric-card"><div class="metric-top"><span class="metric-num">5</span><div><h3>Tracking</h3><span class="metric-score">Subjective Score (0-5, half-point steps)</span></div></div><ul class="check-list"><li>Maintains visual focus on the puck throughout the play.</li><li>Tracks pucks into the body to make the initial save and follows the puck out to locate rebounds.</li><li>Shows awareness and determination finding pucks through traffic or screens.</li></ul></article><article class="metric-card"><div class="metric-top"><span class="metric-num">6</span><div><h3>Puck Handling / Playmaking</h3><span class="metric-score">Subjective Score (0-5, half-point steps)</span></div></div><ul class="check-list"><li>Stops pucks shot in from distance, handles rims cleanly on forehand and backhand.</li><li>Breaks up passes through the crease and clears pucks around the net under pressure.</li><li>Makes accurate outlets, knows when to hold or move the puck, and communicates with the D on retrievals.</li><li>Criteria scale by age: U9-U11 control and cover pucks; U13 stop rims and clear; U15+ all criteria including breakouts and transitions.</li></ul></article><article class="metric-card"><div class="metric-top"><span class="metric-num">7</span><div><h3>Battle / Compete</h3><span class="metric-score">Subjective Score (0-5, half-point steps)</span></div></div><ul class="check-list"><li>Competes on every shot and stays focused through drills, practices, and games.</li><li>Makes second-effort saves and fights through traffic, screens, and contact.</li><li>Never gives up on pucks; competes with urgency in scrambles and rebounds.</li></ul></article><article class="metric-card"><div class="metric-top"><span class="metric-num">8</span><div><h3>Coachability</h3><span class="metric-score">Subjective Score (0-5, half-point steps)</span></div></div><ul class="check-list"><li>Willingness to learn, adapt, and apply feedback consistently.</li><li>Demonstrates openness to instruction and makes adjustments quickly in practices and games.</li></ul></article><article class="metric-card"><div class="metric-top"><span class="metric-num">9</span><div><h3>Mental Toughness</h3><span class="metric-score">Subjective Score (0-5, half-point steps)</span></div></div><ul class="check-list"><li>Focus, confidence, and composure in all situations.</li><li>Resets quickly after goals or mistakes and stays calm regardless of score or crowd.</li><li>Resilient when challenged; communicates positively and handles adversity with maturity.</li></ul></article><article class="metric-card"><div class="metric-top"><span class="metric-num">10</span><div><h3>Teammate</h3><span class="metric-score">Subjective Score (0-5, half-point steps)</span></div></div><ul class="check-list"><li>Shows humility and puts team success above individual recognition.</li><li>Supports teammates after goals against and helps stabilize the group.</li><li>Actively supports their goalie partner, with the same attitude whether playing or on the bench.</li></ul></article></div>
+</div>
+</div>
+</section>
+<section class="section" id="physical-prep">
+<div class="section-inner">
+<h2 class="section-title">How the Evaluation Feeds Physical Preparation</h2>
+<p class="section-intro">Several metrics reflect physical qualities. When a player or the team scores low in these areas, the physical preparation program adds targeted work, and the next evaluation shows whether it helped.</p>
+<div class="table-wrap"><table aria-label="SkillShark metrics linked to physical preparation"><thead><tr><th>Metric</th><th>Who</th><th>Physical qualities it reflects</th><th>Physical prep response</th></tr></thead><tbody><tr><td class="row-heading">Skating</td><td>Skater</td><td>Speed, acceleration, agility, edges, transitions</td><td>Speed and agility blocks, edge and transition work in warm-ups</td></tr><tr><td class="row-heading">Plays with Speed</td><td>Skater</td><td>Speed, repeat-sprint ability</td><td>Short, high-intensity intervals and full-recovery sprint work</td></tr><tr><td class="row-heading">Compete Level</td><td>Skater</td><td>Strength, balance and stability on skates, work capacity</td><td>Lower-body and core strength, battle drills with controlled work:rest</td></tr><tr><td class="row-heading">Crease Movement / Skating</td><td>Goalie</td><td>Lateral power, hip mobility, balance</td><td>Lateral power, hip and groin mobility, butterfly recovery conditioning</td></tr><tr><td class="row-heading">Battle / Compete</td><td>Goalie</td><td>Work capacity, repeat-effort recovery</td><td>Repeat-save conditioning and recovery between reps</td></tr><tr><td class="row-heading">Mental Toughness / Coachability</td><td>Both</td><td>Readiness, recovery habits, response to training</td><td>Wellness check-ins, sleep and nutrition habits, load adjustments</td></tr></tbody></table></div>
+<div class="summary-banner"><p><strong>Bottom line:</strong> the same SkillShark metrics are scored at the start, middle and end of the season, so every player has a clear baseline, a target, and evidence of progress.</p></div>
+</div>
+</section>
+</main>
+<footer><div class="footer-inner"><p><strong>Carlee Campbell HP1 Post Task - Physical Preparation (Section B Question 4): Player Assessment / Evaluation</strong></p><p>Conceptual coaching plan for certification purposes.</p></div></footer>
+</div>
+<script>
+  const navLinks = [...document.querySelectorAll('.site-nav a')];
+  const sections = [...document.querySelectorAll('main section[id]')];
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const link = document.querySelector(`.site-nav a[href="#${entry.target.id}"]`);
+      if (!link) return;
+      if (entry.isIntersecting) { navLinks.forEach(a => a.classList.remove('active')); link.classList.add('active'); }
+    });
+  }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+  sections.forEach(section => observer.observe(section));
+</script>
 </body>
 </html>
